@@ -13,7 +13,7 @@ I wanted my Z13 to actually charge while gaming on a USB-C charger instead of sl
   - USB-C: Type-C Gaming Mode, which keeps the battery charging under load
   - Battery: lowest power
 - **Manual sliders** for SPL / sPPT / fPPT, with big +/- buttons for the touchscreen
-- **Presets**: Eco, Quiet, Balanced, Gaming and Max, plus a button to put the sliders back to default
+- **Presets**: Eco, Quiet, Balanced, Gaming and Max, incase you want to mess with the sliders but are scared
 - **Live status**: battery %, charge/drain rate in watts and the limits currently applied
 - Follows your **Windows accent colour**
 - Re-applies your limits every 30 s, because the firmware sometimes resets them
@@ -22,8 +22,6 @@ I wanted my Z13 to actually charge while gaming on a USB-C charger instead of sl
 ## Download
 
 Grab `zap13.exe` from [Releases](https://github.com/normanlove/zap13/releases) and run it.
-
-The exe isn't code signed, so SmartScreen will probably complain the first time. Click **More info → Run anyway**. If you'd rather not, building it yourself is easy (see below).
 
 ## Requirements
 
@@ -47,22 +45,7 @@ It checks the power source every 5 seconds. Manual limits stay on until you hit 
 
 Settings are saved to `%APPDATA%\zap13\settings.json`.
 
-## Building
-
-You need Go 1.24+.
-
 ```
-go build -ldflags "-H windowsgui -s -w" -o zap13.exe .
-```
-
-You can also cross-compile from Linux/macOS with `GOOS=windows GOARCH=amd64`.
-
-The icon, manifest and version info are in `winres/`. After changing them, regenerate the `.syso` with [go-winres](https://github.com/tc-hib/go-winres):
-
-```
-go-winres make --in winres/winres.json --arch amd64
-```
-
 ## Credits
 
 - [G-Helper](https://github.com/seerge/g-helper), for documenting the ASUS ACPI device IDs
