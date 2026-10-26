@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>zap13</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand" id="drag">
+      <div class="logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 4.5 13.6h6.3L9.6 22l9.9-12.4h-6.4L13.5 2z"/></svg></div>
+      <div>
+        <h1>zap13</h1>
+        <p>Power limits that follow your charger</p>
+      </div>
+    </div>
+    <div id="pill" class="pill auto"><span class="dot"></span><span id="pillText">AUTO</span></div>
+    <div class="winbtns">
+      <button class="winbtn" id="min" title="Minimise"><svg viewBox="0 0 16 16"><rect x="3" y="7.4" width="10" height="1.4" rx=".7" fill="currentColor"/></svg></button>
+      <button class="winbtn close" id="close" title="Close"><svg viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="left">
+      <div class="panel status">
+        <div>
+          <div id="pct" class="pct">—</div>
+          <div class="bar"><div id="barFill"></div></div>
+          <div id="flow" class="flow">Reading battery…</div>
+        </div>
+        <div class="limits">
+          <div class="cap">CURRENT LIMITS</div>
+          <div id="limMain" class="limmain">—</div>
+          <div id="limSub" class="limsub">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="card" data-src="barrel">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2 4.5 13.6h6.3L9.6 22l9.9-12.4h-6.4L13.5 2z"/></svg>
+        <div class="t"><div class="title">Mains adapter</div><div class="sub">Max performance</div></div>
+        <div class="side"><span class="badge">ACTIVE</span><span class="detail">Turbo · full limits</span></div>
+      </div>
+      <div class="card" data-src="usbc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7.5" width="20" height="9" rx="4.5"/><rect x="7" y="11" width="10" height="2" rx="1" fill="currentColor" stroke="none"/></svg>
+        <div class="t"><div class="title">USB-C charger</div><div class="sub">100W Type-C Gaming Mode</div></div>
+        <div class="side"><span class="badge">ACTIVE</span></div>
+      </div>
+      <div class="card" data-src="battery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6.5" width="17.5" height="11" rx="2.5"/><path d="M22 10.5v3" stroke-linecap="round"/><rect x="5" y="9.5" width="4.5" height="5" rx="1" fill="currentColor" stroke="none"/></svg>
+        <div class="t"><div class="title">Battery</div><div class="sub">Lowest power</div></div>
+        <div class="side"><span class="badge">ACTIVE</span><span class="detail" id="batDetail">Silent · 15 / 18 / 22 W</span></div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="panel manual-panel">
+        <h2>Manual limits</h2>
+        <p>Overrides auto until you go back or the charger changes</p>
+        <div class="presets" id="presets"></div>
+        <div class="sliders">
+        <div class="slider"><div class="row"><span class="name">SPL</span><span class="hint">sustained</span><span class="spacer"></span>
+          <button class="step" data-d="-1">−</button><span class="val"><b>22</b> <small>W</small></span><button class="step" data-d="1">+</button></div>
+          <input type="range" min="5" max="120" value="22"></div>
+        <div class="slider"><div class="row"><span class="name">sPPT</span><span class="hint">slow boost</span><span class="spacer"></span>
+          <button class="step" data-d="-1">−</button><span class="val"><b>26</b> <small>W</small></span><button class="step" data-d="1">+</button></div>
+          <input type="range" min="5" max="120" value="26"></div>
+        <div class="slider"><div class="row"><span class="name">fPPT</span><span class="hint">fast boost</span><span class="spacer"></span>
+          <button class="step" data-d="-1">−</button><span class="val"><b>30</b> <small>W</small></span><button class="step" data-d="1">+</button></div>
+          <input type="range" min="5" max="120" value="30"></div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn primary" id="apply">Apply limits</button>
+        <button class="btn" id="auto">Back to auto</button>
+        <button class="btn" id="def">System default</button>
+      </div>
+    </section>
+  </main>
+
+  <footer><span id="log">&nbsp;</span><span class="credit">Made by <b>nrmluvdev</b></span></footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
